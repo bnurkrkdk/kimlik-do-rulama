@@ -43,7 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-    /**
+     /**
      * Create and save a new user.
      *
      * @param string $name
@@ -59,16 +59,4 @@ class User extends Authenticatable
             'password' => bcrypt($password), // Şifreyi şifreleyerek kaydediyoruz
         ]);
     }
-    public static function deleteUser($userId)
-    {
-        $user = self::find($userId);
-    
-        if ($user) {
-            $user->delete();
-            return true;
-        }
-    
-        return false;
-    }
-
 }

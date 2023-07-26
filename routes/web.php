@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
+
+Route::get('/add-user', [UserController::class, 'createUser']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
