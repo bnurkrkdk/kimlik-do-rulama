@@ -1,0 +1,74 @@
+<?php
+
+namespace App\Models;
+
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+    /**
+     * Create and save a new user.
+     *
+     * @param string $name
+     * @param string $email
+     * @param string $password
+     * @return User
+     */
+    public static function createUser($name, $email, $password)
+    {
+        return self::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => bcrypt($password), // Şifreyi şifreleyerek kaydediyoruz
+        ]);
+    }
+    public static function deleteUser($userId)
+    {
+        $user = self::find($userId);
+    
+        if ($user) {
+            $user->delete();
+            return true;
+        }
+    
+        return false;
+    }
+
+}
