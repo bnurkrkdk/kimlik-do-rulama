@@ -1,0 +1,3 @@
+id,name,email,email_verified_at,password,remember_token,created_at,updated_at
+1,abc,abc@abc.com,NULL,$2y$10$dPMu4ocbDI2BIqYW0jW0KuOJIsaUOIsoSN1a56qrJOX/n7FbzTX3q,NULL,31/07/2023 07:48,31/07/2023 07:48
+2,ikinci kullanıcı,ikincikullanıcı@gmail.com,NULL,$2y$10$p5rt1x9fx0K5D176gw0jx.XvOWEqSC76SgK2o3wuERCjjToidB7P2,NULL,04/08/2023 09:12,04/08/2023 09:12

@@ -56,7 +56,32 @@ class User extends Authenticatable
         return self::create([
             'name' => $name,
             'email' => $email,
-            'password' => bcrypt($password), // Şifreyi şifreleyerek kaydediyoruz
+            'password' => Hash::make($password), // Şifreyi şifreleyerek kaydediyoruz
         ]);
     }
+
+    /**
+     * Güncelleme ve kaydetme işlemi için kullanıcı bilgilerini güncelle.
+     *
+     * @param int $userId
+     * @param array $userData
+     * @return User
+     */
+    public static function updateUser($userId, $userData)
+    {
+        $user = self::find($userId);
+        if (!$user) {
+            // Kullanıcı bulunamadı, hata yapılabilir.
+            return null;
+        }
+
+        // Güncelleme işlemlerini yap
+        $user->name = $userData['name'];
+        $user->email = $userData['email'];
+        $user->password = Hash::make($userData['password']); // Şifreyi güncelleyerek şifrele
+        $user->save();
+
+        return $user;
+    }
 }
+

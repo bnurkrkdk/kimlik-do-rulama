@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 
-Route::get('/add-user', [UserController::class, 'createUser']);
-
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/example', [UserController::class, 'showExamplePage']);
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

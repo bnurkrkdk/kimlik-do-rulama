@@ -8,20 +8,19 @@ use App\Models\User;
 
 class CreateUser extends Command
 {
-    protected $signature = 'app:create-user';
-
+    protected $signature = 'create:user';
     protected $description = 'Create a new user';
-
     public function handle()
-    {
-        // Kullanıcı bilgilerini burada elle girin
-        $name = 'abc';
-        $email = 'abc@abc.com';
-        $password = 'abcabc';
+{
+    $name = $this->ask('Kullanıcı Adı: ');
+    $email = $this->ask('E-posta: ');
+    $password = $this->secret('Şifre: ');
 
-        // Yeni kullanıcı oluşturun
-        User::createUser($name, $email, $password);
+    User::createUser($name, $email, $password);
 
-        $this->info('Kullanıcı oluşturuldu!');
-    }
+    $this->info('Kullanıcı oluşturuldu!');
 }
+
+}
+
+
