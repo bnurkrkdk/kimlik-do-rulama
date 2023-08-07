@@ -14,28 +14,27 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	height: 100vh;
 	margin: 0 0 0 0;
-	pointer-events: auto;
 }
 p{
     font-size:small;
 	padding: 0%;
-	margin-top: 5%;
-	margin-bottom: 0%;
-	pointer-events: auto;
+	margin-top: 2%;
+	margin-bottom: 2.5%;
 }
 h3{
     font-weight:lighter;
 	font-size:xx-large;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 0%;
-	margin-bottom: 10%;
+	margin-bottom: 3%;
 	margin-top: 0%;
-	pointer-events: auto;
 
 }
 img{
-	padding: 50px 140px 0px ;
-	pointer-events: auto;
+	display:block;
+	margin:auto;
+	margin-top: 7%;
+	width: 30%;
 }
 button {
 	border-radius: 20px;
@@ -47,23 +46,19 @@ button {
 	padding: 12px 45px;
 	transition: transform 80ms ease-in;
 	margin-top: 5px;
-	pointer-events: auto;
 }
 
 button:active {
 	transform: scale(0.85);
-	pointer-events: auto;
 }
 
 button:focus {
 	outline: black solid 2px;
-	pointer-events: auto;
 }
 
 button.ghost {
 	background-color: transparent;
 	border-color: #000000bb;
-	pointer-events: auto;
 }
 
 form {
@@ -75,7 +70,6 @@ form {
 	padding: 0px 50px;
 	height: 55%;
 	text-align: center;
-	pointer-events: auto;
 }
 
 input {
@@ -84,7 +78,6 @@ input {
 	padding: 12px 15px;
 	margin:5px 0;
 	width: 75%;
-	pointer-events: auto;
 }
 
 .container {
@@ -97,7 +90,6 @@ input {
 	width: 384px;
 	max-width: 100%;
 	min-height: 480px;
-	pointer-events: auto;
 }
 
 .form-container {
@@ -105,23 +97,44 @@ input {
 	top: 70;
 	height: 100%;
 	transition: all 0.6s ease-in-out;
-	pointer-events: auto;
 }
 
 .sign-in-container {
 	left: 0;
 	width: 100%;
 	z-index: 2;
-	pointer-events: auto;
 }
+/* Önceki CSS stil kodlarını buraya ekleyin */
+
+.parallax-container {
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    perspective: 1px;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('your-parallax-image.jpg'); /* Paralaks arka plan resminizin URL'sini buraya ekleyin */
+    background-size: cover;
+    transform-origin: 0 0;
+    transform: translateZ(-1px) scale(2);
+    z-index: -1;
+}
+
 
     </style>
 	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+	<script src="{{ asset('js/javas.js') }}"></script>
 
 </head>
 <body>
     <div class="container">
-        <img src="C:\Users\Beyza Karakodak\Desktop\kimlik-doğrulama\storage\framework\views\Diyanet_İşleri_Başkanlığı_yeni_logo.svg.png">
+    <img src="{{ asset('Diyanet_İşleri_Başkanlığı_yeni_logo.svg.png') }}" alt="diyanet logo">
         <div class="form-container sign-in-container" style="transition: transform 0.1 ease;">
 			<form method="POST" action="{{ route('login') }}">
 				@csrf
@@ -129,7 +142,7 @@ input {
                 <p>Lütfen kimliğinizi doğrulayabilmemiz için giriş yapınız.</p>
                 <input type="email" name="email" placeholder="Email" />
                 <input type="password" name="password" placeholder="Şifre" />
-                <button>GİRİŞ YAP</button>
+                <button type="button">GİRİŞ YAP</button>
             </form>
         </div>
     </div>
