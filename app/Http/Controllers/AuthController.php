@@ -22,7 +22,7 @@ class AuthController extends Controller
         $password = $request->input('password');
         $credentials = $request->only('email', 'password');
         $user = User::where('email', $email)->first();
-
+        dd($plainPassword, $hashedPassword);
         if ($user && Hash::check($plainPassword, $user->password)) {
             // Şifre doğru, giriş başarılı
             // İşlemleri buraya ekleyebilirsiniz
