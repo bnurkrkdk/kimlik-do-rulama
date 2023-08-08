@@ -19,15 +19,15 @@ class AuthController extends Controller
             dd($request->all());
             $credentials = $request->only('email', 'password');
             
-            if (Auth::attempt($credentials)) {
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 // Kullanıcı giriş yapmıştır, burada yapılacak işlemleri belirleyebilirsiniz
-                // Örneğin yönlendirme yapabilir veya başka bir sayfaya geçebilirsiniz
-               /* return redirect('/dashboard');*/
-               Session::flash('success', 'Başarıyla giriş yaptınız!');
+                Session::flash('success', 'Başarıyla giriş yaptınız!');
+                /* return redirect('/dashboard');*/
             } else {
                 // Kullanıcı giriş başarısız, hata mesajı gösterebilir veya başka bir işlem yapabilirsiniz
                 return back()->with('error', 'Giriş başarısız. Lütfen bilgilerinizi kontrol edin.');
             }
+            
         }
         
 
