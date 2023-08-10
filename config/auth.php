@@ -36,11 +36,21 @@ return [
     */
 
     'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+            'User' => [
+                'driver' => 'passport',
+                'provider' => 'User',
+            ],
+        
         'api' => [
-            'driver' => 'passport',
+            'driver' => 'passport', // Burası 'api' olarak ayarlanmış olmalı
             'provider' => 'users',
         ],
     ],
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +73,13 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+            
         ],
+            'User' => [
+                'driver' => 'eloquent',
+                'model' => App\Models\User::class,
+            ],
+        
 
         // 'users' => [
         //     'driver' => 'database',
