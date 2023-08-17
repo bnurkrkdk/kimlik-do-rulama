@@ -44,16 +44,19 @@ class AuthController extends Controller{
 //        //    }*/       }
         
        public function login(Request $request){
+      
+                //dd($request->all());
            $login = $request->validate([
                'email' => 'required|string',
                'password' => 'required|string',
            ]);
            try {
                $authGuard = Auth::guard('api');
-               if(!$authGuard->check($login)){
-                Passport::flash('success', 'Başarıyla giriş yaptınız!');
-                  // $data = 'Invalid Login Credentials';
-                  // $code = 401;
+               dd($authGuard->check($login));
+               if($authGuard->check($login)){
+                return back()->with('error', 'Giriş başarısız. Lütfen bilgilerinizi kontrol edin.');
+                 $data = 'Invalid Login Credentials';
+                 $code = 401;
                } else {
                    $user = $authGuard->user();
                    $token = $user->createToken('user')->accessToken;
@@ -67,6 +70,7 @@ class AuthController extends Controller{
                $data = ['error' => $e->getMessage()];
            }
            return response()->json($data, $code);
+           
        }
     
 }
