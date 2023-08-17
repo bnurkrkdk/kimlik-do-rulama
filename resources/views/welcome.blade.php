@@ -16,7 +16,7 @@
                 <h3>Hoş Geldiniz!</h3>
                 <p>Lütfen kimliğinizi doğrulayabilmemiz için giriş yapınız.</p>
                 <input type="email" name="email" placeholder="Email" />
-                <input type="text" name="name" placeholder="name" />
+ <!--           <input type="text" name="name" placeholder="name" />-->
                 <input type="password" name="password" placeholder="Şifre" />
                 <button type="submit">GİRİŞ YAP</button>
 				@if(Session::has('success'))
