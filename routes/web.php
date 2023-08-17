@@ -1,12 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-
-Route::post('/user-login', [AuthController::class, 'login'])->name('user-login');
-
 
 // routes/web.php dosyasında
 

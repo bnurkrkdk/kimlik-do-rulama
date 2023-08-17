@@ -35,21 +35,6 @@ return [
     |
     */
 
-    'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
-            'User' => [
-                'driver' => 'passport',
-                'provider' => 'User',
-            ],
-        
-        'api' => [
-            'driver' => 'passport', // Burası 'api' olarak ayarlanmış olmalı
-            'provider' => 'users',
-        ],
-    ],
     
 
     /*
