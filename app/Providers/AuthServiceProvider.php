@@ -19,16 +19,20 @@ class AuthServiceProvider extends ServiceProvider
         // ...
         \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
     ];
-    
+
 
     /**
      * Register any authentication / authorization services.
      */
     public function boot(): void
     {
+        $this->app['auth']->extend('api', function ($app) {
+            return new \Laravel\Passport\PassportGuard($app);
+        });
+
         $this->registerPolicies();
 
-       
+
     }
 }
 /*class AuthServiceProvider extends ServiceProvider

@@ -43,6 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
      /**
      * Create and save a new user.
      *
@@ -51,10 +52,10 @@ class User extends Authenticatable
      * @param string $password
      * @return User
      */
-    public static function createUser($name, $email, $password)
+    public static function createUser( $name, $email, $password)
     {
         return self::create([
-            'name' => $name,
+           'name' => $name,
             'email' => $email,
             'password' => Hash::make($password), // Şifreyi şifreleyerek kaydediyoruz
         ]);
@@ -78,7 +79,7 @@ class User extends Authenticatable
         // Güncelleme işlemlerini yap
         $user->name = $userData['name'];
         $user->email = $userData['email'];
-        $user->password = Hash::make($userData['password']); // Şifreyi güncelleyerek şifrele
+        $user->password = Hash::make($userData['password']);// Şifreyi güncelleyerek şifrele
         $user->save();
 
         return $user;
